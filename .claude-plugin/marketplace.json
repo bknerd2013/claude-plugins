@@ -1,0 +1,22 @@
+{
+  "name": "swarm-desktop",
+  "owner": {
+    "name": "swarm-desktop",
+    "email": "team@go2look.cn",
+    "url": "https://desktop.go2look.cn"
+  },
+  "plugins": [
+    {
+      "name": "swarm-research",
+      "source": "./plugins/swarm-research",
+      "description": "High-density multi-agent research as the upstream node of your Claude work sessions.",
+      "version": "0.1.0",
+      "category": "research",
+      "keywords": [
+        "research",
+        "investment",
+        "equity"
+      ]
+    }
+  ]
+}

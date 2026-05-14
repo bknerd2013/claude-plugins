@@ -1,0 +1,19 @@
+{
+  "name": "swarm-research",
+  "version": "0.1.0",
+  "description": "Run high-density multi-agent research via swarm-desktop, with tier-1 source authority and ticker-tagged citations. Use as the start of any research-driven work session.",
+  "author": {
+    "name": "swarm-desktop",
+    "url": "https://desktop.go2look.cn"
+  },
+  "homepage": "https://desktop.go2look.cn",
+  "repository": "https://github.com/bknerd2013/claude-plugins",
+  "license": "Apache-2.0",
+  "keywords": [
+    "research",
+    "investment",
+    "equity",
+    "multi-agent",
+    "swarm"
+  ]
+}
