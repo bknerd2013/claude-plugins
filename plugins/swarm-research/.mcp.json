@@ -2,7 +2,7 @@
   "mcpServers": {
     "swarm-research": {
       "type": "http",
-      "url": "https://mcp.go2look.cn/mcp"
+      "url": "https://desktop-mcp.go2look.cn/mcp"
     }
   }
 }

@@ -16,7 +16,7 @@ On first use, Claude opens an OAuth login with your swarm-desktop account. Appro
 Without the plugin, add this connector URL manually:
 
 ```text
-https://mcp.go2look.cn/mcp
+https://desktop-mcp.go2look.cn/mcp
 ```
 
 The bare connector exposes the same tools and resources; the plugin adds trigger rules for prompts like `研究 X`.
