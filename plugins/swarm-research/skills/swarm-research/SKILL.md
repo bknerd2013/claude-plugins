@@ -38,6 +38,14 @@ Bad (model-fabricated figures bolted on): `prompt: "研究主题: ... 背景与�
 
 After `swarm_research_start`, briefly tell the user the run_id and that the run usually takes 5-15 minutes. Poll `swarm_research_status` every 60-120 seconds. When `agents` is present, summarize it naturally. When `status=completed`, call `swarm_research_fetch_report`.
 
-## Output Framing
+## Output Framing — render verbatim, then stop
 
-The returned markdown is high-density research context. Treat it as foundational input for downstream reasoning, writing, and decision support.
+The returned markdown is the product the user paid 5-15 minutes for. It is **not** internal scratchpad context for you to summarize from.
+
+When `swarm_research_fetch_report` returns:
+
+1. **Render `response.markdown` verbatim** as your immediate reply. Do not summarize, paraphrase, translate, reorder sections, drop sentences, or wrap it in your own narration. Preserve every `[ev_xxx]` token in place — those are the document's audit trail.
+2. **Append a `## 引用 / References` section** built from `response.citations[]`. Each citation becomes a bullet `- [{title}]({url})` (fall back to `{id}` if there is no url). For xAI per-post entries the title already starts with "X post by @handle" — keep it as the link text. This turns the inline `[ev_xxx]` tokens into auditable, clickable sources in the user-visible chat.
+3. **Stop.** No "key takeaways", no confidence assessment, no follow-up suggestions, no "what would you like to do next" prompt. The user's natural next move is to read the report and ask you to interpret a specific section — wait for that cue and engage from there.
+
+Showing the full markdown is what makes the run worth running. Summarizing it in the same turn collapses 5-15 minutes of high-density research into a paraphrase the user can't audit.
