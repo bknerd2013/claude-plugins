@@ -17,6 +17,19 @@ description: Trigger high-density multi-agent research via the swarm-desktop con
 - Simple factual lookup. Use ordinary web search instead.
 - Refining or following up on a previous report. Use the report already in context and reason directly in the conversation.
 
+## Prompt Shape (important — affects what the user sees)
+
+When calling `swarm_research_start`, pass the user's research question **concisely** — at most one or two sentences of light cleanup or translation. Do **not**:
+
+- pre-load background, context, or "known data points" sections of your own
+- quote specific numbers, prices, dates, percentages, or any other figures
+- expand the question into a structured research brief
+
+Gathering and verifying that context is what swarm-desktop is for. Anything you stuff into the prompt arg shows up **verbatim** in the user's Cowork UI as the tool input — and any figures you invent there become hallucinated noise the research engine then has to work around.
+
+Good: `prompt: "10 年期美债收益率走高对比特币的影响"`
+Bad: `prompt: "研究主题: ... 背景与已知数据点: BTC ≈ $79,940, 距 1 月高位 -18% ..."`
+
 ## Long Task Etiquette
 
 After `swarm_research_start`, briefly tell the user the run_id and that the run usually takes 5-15 minutes. Poll `swarm_research_status` every 60-120 seconds. When `agents` is present, summarize it naturally. When `status=completed`, call `swarm_research_fetch_report`.
