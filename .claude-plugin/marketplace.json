@@ -10,6 +10,7 @@
       "name": "swarm-research",
       "source": "./plugins/swarm-research",
       "description": "High-density multi-agent research as the upstream node of your Claude work sessions.",
+      "version": "0.1.1",
       "category": "research",
       "keywords": [
         "research",
