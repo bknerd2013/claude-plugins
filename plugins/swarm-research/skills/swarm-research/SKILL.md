@@ -44,8 +44,8 @@ The returned markdown is the product the user paid 5-15 minutes for. It is **not
 
 When `swarm_research_fetch_report` returns:
 
-1. **Render `response.markdown` verbatim** as your immediate reply. Do not summarize, paraphrase, translate, reorder sections, drop sentences, or wrap it in your own narration. Preserve every `[ev_xxx]` token in place — those are the document's audit trail.
-2. **Append a `## 引用 / References` section** built from `response.citations[]`. Each citation becomes a bullet `- [{title}]({url})` (fall back to `{id}` if there is no url). For xAI per-post entries the title already starts with "X post by @handle" — keep it as the link text. This turns the inline `[ev_xxx]` tokens into auditable, clickable sources in the user-visible chat.
+1. **Render `response.markdown` verbatim** as your immediate reply. Do not summarize, paraphrase, translate, reorder sections, drop sentences, or wrap it in your own narration. The markdown is already chat-ready: every `[ev_xxx]` audit token has been replaced by a numbered, clickable citation like `[1](https://...)` and the document ends with a `## 引用 / References` section listing every source.
+2. **Do not edit the citation markers.** They are already correctly numbered and linked. Do not build your own References list — it is already there. Do not strip or rewrite the numbered links.
 3. **Stop.** No "key takeaways", no confidence assessment, no follow-up suggestions, no "what would you like to do next" prompt. The user's natural next move is to read the report and ask you to interpret a specific section — wait for that cue and engage from there.
 
 Showing the full markdown is what makes the run worth running. Summarizing it in the same turn collapses 5-15 minutes of high-density research into a paraphrase the user can't audit.
