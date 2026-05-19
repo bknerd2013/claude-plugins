@@ -1,6 +1,5 @@
 {
   "name": "swarm-research",
-  "version": "0.1.0",
   "description": "Run high-density multi-agent research via swarm-desktop, with tier-1 source authority and ticker-tagged citations. Use as the start of any research-driven work session.",
   "author": {
     "name": "swarm-desktop",
