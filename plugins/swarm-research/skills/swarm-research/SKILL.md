@@ -19,16 +19,20 @@ description: Trigger high-density multi-agent research via the swarm-desktop con
 
 ## Prompt Shape (important — affects what the user sees)
 
-When calling `swarm_research_start`, pass the user's research question **concisely** — at most one or two sentences of light cleanup or translation. Do **not**:
+When calling `swarm_research_start`, pass the user's research question **concisely** — at most one or two sentences of light cleanup or translation.
 
-- pre-load background, context, or "known data points" sections of your own
-- quote specific numbers, prices, dates, percentages, or any other figures
-- expand the question into a structured research brief
+**Keep** every constraint the user already wrote: dates, quarters, tickers, named entities, ranges, jurisdictions, version numbers. Those are the scope of the research and dropping them silently changes what gets studied.
+
+**Do not add** anything the user did not say:
+- no "known data points" / "background" / "context" sections of your own
+- no numbers, prices, percentages, exchange rates, market caps, or other figures you sourced from memory
+- no expansion into a structured research brief with headings / sub-questions / output requirements
 
 Gathering and verifying that context is what swarm-desktop is for. Anything you stuff into the prompt arg shows up **verbatim** in the user's Cowork UI as the tool input — and any figures you invent there become hallucinated noise the research engine then has to work around.
 
-Good: `prompt: "10 年期美债收益率走高对比特币的影响"`
-Bad: `prompt: "研究主题: ... 背景与已知数据点: BTC ≈ $79,940, 距 1 月高位 -18% ..."`
+Good (keeps user-supplied date + entity): `prompt: "研究 小米 2025 年 Q4 智能手机业务"`
+Good (keeps user-supplied instrument): `prompt: "10 年期美债收益率走高对比特币的影响"`
+Bad (model-fabricated figures bolted on): `prompt: "研究主题: ... 背景与已知数据点: BTC ≈ $79,940, 距 1 月高位 -18% ..."`
 
 ## Long Task Etiquette
 
